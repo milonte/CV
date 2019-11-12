@@ -20,6 +20,9 @@
     "doctrine/common": {
         "version": "v2.11.0"
     },
+    "doctrine/data-fixtures": {
+        "version": "v1.3.2"
+    },
     "doctrine/dbal": {
         "version": "v2.9.2"
     },
@@ -40,6 +43,18 @@
     },
     "doctrine/doctrine-cache-bundle": {
         "version": "1.3.5"
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "fc52d86631a6dfd9fdf3381d0b7e3df2069e51b3"
+        },
+        "files": [
+            "./src/DataFixtures/AppFixtures.php"
+        ]
     },
     "doctrine/doctrine-migrations-bundle": {
         "version": "1.2",
@@ -99,8 +114,17 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "limenius/react-bundle": {
+        "version": "v3.0.1"
+    },
+    "limenius/react-renderer": {
+        "version": "v3.0.0"
+    },
     "monolog/monolog": {
         "version": "1.25.1"
+    },
+    "nacmartin/phpexecjs": {
+        "version": "v2.0.0"
     },
     "nikic/php-parser": {
         "version": "v4.2.4"
@@ -454,6 +478,9 @@
             "./templates/base.html.twig"
         ]
     },
+    "symfony/twig-pack": {
+        "version": "v1.0.0"
+    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -499,8 +526,29 @@
             "ref": "dae9b39fd6717970be7601101ce5aa960bf53d9a"
         }
     },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "d3b160b9799c91cbfc3df6f018c795f3bf88698a"
+        },
+        "files": [
+            "./assets/css/app.css",
+            "./assets/js/app.js",
+            "./config/packages/assets.yaml",
+            "./config/packages/prod/webpack_encore.yaml",
+            "./config/packages/webpack_encore.yaml",
+            "./package.json",
+            "./webpack.config.js"
+        ]
+    },
     "symfony/yaml": {
         "version": "v4.3.5"
+    },
+    "twig/extra-bundle": {
+        "version": "v2.12.1"
     },
     "twig/twig": {
         "version": "v2.12.1"

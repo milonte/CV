@@ -1,0 +1,162 @@
+$primary: rgb(0, 181, 253);
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/lux/variables";
+@import "~bootswatch/dist/lux/bootswatch";
+
+$menuWidth: 150px;
+
+body {
+    background-color: rgb(129, 194, 255) !important;
+    font-weight: 100;
+
+}
+.container-fluid {
+    max-height: 100vh;
+}
+
+#menu {
+    background-color: white;
+    padding: 0;
+    overflow: hidden;
+    .list-group {
+        width: 100%;
+        .list-group-item {
+            border: 0 !important;
+            border-bottom: 1px solid rgba($primary, .4) !important;
+            border-radius: 0 !important;
+            padding: 1em;
+            text-align: right;
+            font-size: 2vh;
+        }
+    }
+}
+
+
+#content {
+    z-index: 30;
+    display: block;
+    #tab-content {
+        min-height: 100vh;
+        background-color: white;
+        padding: 2em;
+    }
+}
+
+.project {
+    background-color: rgb(173, 204, 255) !important;
+}
+
+.one_project_card {
+    /* border: 1px solid rgba($primary, .5); */
+    border-radius: 0;
+    .picture-handler {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 580px) {
+
+    #content {
+        padding: 0;
+    }
+
+    #menu {
+       min-width: 100vw;
+       border-bottom: 1px solid $primary;
+       .list-group-item-action {
+           display: none;
+       }
+    }
+}
+
+
+@media screen and (min-width: 992px) {
+
+    #menu {
+        height: 100vh;  
+        display: flex;
+        flex-direction: column;
+        height: 110vh;
+        overflow: hidden;
+        position: fixed;
+        transform: rotate(5deg);
+        padding-top: 3em;
+        margin-top: -2em;
+        margin-left: -3em;
+    }
+
+
+    #content {
+        margin-left: 22vw;
+        max-width: 70vw;
+        &:before {
+            background-color: white;
+            content: " ";
+            margin-left: 21vw;
+            position: fixed;
+            display: block;
+            width: 50%;
+            min-height: 110vh;
+            top: -3px;
+            left: 0;
+            z-index: -1;
+            transform-origin: top left;
+            transform: rotate(5deg);
+        }
+        &:after {
+            position: fixed;
+            display: block;
+            margin-left: 88vw;
+            background-color: white;
+            content: " ";
+            width: 10%;
+            min-height: 110vh;
+            top: -2vh;
+            left: 0;
+            z-index: -1;
+            transform-origin: top left;
+            transform: rotate(5deg);
+        }
+    }
+
+    .one_project_card {
+        /* height: 150px; */
+        height: 15vh;
+        margin: 3vh 0;
+        transform: skewX(-5deg);
+        overflow: hidden;
+        .picture-handler {
+            overflow: hidden;
+            .project_picture {
+                transform: skewX(5deg);
+                /* min-width: 15vw; */
+                height: 15vh;
+            }
+        }
+        .project_link {
+            display: flex;
+            flex-direction: row;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            max-width: 100%;
+            text-align: center;
+            .project_link_website,
+            .project_link_github,
+            .project_link_show {
+                height: 5vh;
+            }
+            .project_link_website {
+                background-color: rgb(255, 170, 170);
+            }
+            .project_link_github {
+                background-color: rgb(163, 255, 163);
+            }
+            .project_link_show {
+                background-color: rgb(188, 188, 255);
+            }
+        }
+    }
+
+}
