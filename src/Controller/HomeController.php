@@ -25,12 +25,16 @@ class HomeController extends AbstractController
 
         $result = [];
         foreach ($projectRepository->findAll() as $project) {
+            $pictures = [];
+            foreach($project->getPictures() as $picture) {
+                $pictures[] = $picture->getName();
+            }
             $result[] = [
                 'id' => $project->getId(),
                 'name' => $project->getName(),
                 'description' => $project->getDescription(),
                 'date' => $project->getDate(),
-                'pictures' => $project->getPictures(),
+                'pictures' => $pictures,
             ];
         }
 

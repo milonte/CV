@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,18 +34,15 @@ class Project
     private $date;
 
     /**
-     * @ORM\Column(type="json")
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="project")
      */
-    private $pictures = [];
+    private $pictures;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Stack", inversedBy="projects")
-     */
-    private $stacks;
 
     public function __construct()
     {
         $this->stacks = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,41 +86,35 @@ class Project
         return $this;
     }
 
-    public function getPictures(): ?array
+    /**
+     * @return Collection|Picture[]
+     */
+    public function getPictures(): Collection
     {
         return $this->pictures;
     }
 
-    public function setPictures(?array $pictures): self
+    public function addPicture(Picture $picture): self
     {
-        $this->pictures = $pictures;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Stack[]
-     */
-    public function getStacks(): Collection
-    {
-        return $this->stacks;
-    }
-
-    public function addStack(Stack $stack): self
-    {
-        if (!$this->stacks->contains($stack)) {
-            $this->stacks[] = $stack;
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures[] = $picture;
+            $picture->setProject($this);
         }
 
         return $this;
     }
 
-    public function removeStack(Stack $stack): self
+    public function removePicture(Picture $picture): self
     {
-        if ($this->stacks->contains($stack)) {
-            $this->stacks->removeElement($stack);
+        if ($this->pictures->contains($picture)) {
+            $this->pictures->removeElement($picture);
+            // set the owning side to null (unless already changed)
+            if ($picture->getProject() === $this) {
+                $picture->setProject(null);
+            }
         }
 
         return $this;
     }
+
 }
