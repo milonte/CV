@@ -13,7 +13,7 @@ export default class About extends Component {
     render() {
         return (
             <div>
-                <Title title="Contact" description="Zbouiiii zbouiiii zbouuiiiiiiiiiiiiiiiiiiiiiii !" />
+                <Title title="Présentation" description="Zbouiiii zbouiiii zbouuiiiiiiiiiiiiiiiiiiiiiii !" />
             </div>
         )
     }

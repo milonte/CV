@@ -1,31 +1,45 @@
 $primary: #85D7F6;
 @import "~bootstrap/scss/bootstrap";
-@import "~bootswatch/dist/lux/variables";
-@import "~bootswatch/dist/lux/bootswatch";
+/* @import "~bootswatch/dist/lux/variables";
+@import "~bootswatch/dist/lux/bootswatch"; */
 
 $menuWidth: 150px;
 
 body {
     background-image: url(../../assets/images/bg.png);
-    background-color: rgba(0,0,0,.60) !important;
+    background-color: rgba(0, 0, 0, .60) !important;
     background-blend-mode: overlay;
-    
+
     font-weight: 100;
 
 }
+
 .container-fluid {
     max-height: 100vh;
 }
 
+
 #menu {
     background-color: $primary;
-    
     padding: 0;
-    overflow: hidden;
-    .list-group {
-        width: 100%;
-        .list-group-item {
+    
+    #navbar {
+        width: 100vw;
+        background-color: $primary;
+        display: flex;
+    
+        a {
             color: white;
+        }
+    }
+   /*  .list-group {
+        width: 100%;
+
+        .list-group-item {
+            a {
+                color: white;
+            }
+
             background-color: $primary;
             border: 0 !important;
             border-bottom: 1px solid rgba($primary, .4) !important;
@@ -34,39 +48,47 @@ body {
             text-align: right;
             font-size: 2vh;
         }
+
         .active {
-            background-color: rgba(0,153,255,.27) !important;
+            background-color: rgba(0, 153, 255, .27) !important;
         }
-    }
+    } */
 }
 
 
 #content {
     z-index: 30;
     display: block;
+
     #tab-content {
         min-height: 100vh;
-       /*  background-color: white; */
         padding: 2em;
     }
+
     .title_component {
+        margin-top: 50px;
+        margin-bottom: 50px;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-align: center;
         color: white;
+
         .title {
             font-weight: bold;
+            font-size: 50px;
+            text-transform: none;
+            padding-bottom: 20px;
         }
+
         .title_over {
             z-index: -1;
-            color: rgba(0,0,0,.3);
-            position: absolute;
-            display: inline;
-            font-size: 70px;
-            left: 0; 
-            right: 0; 
-            margin-left: auto; 
+            color: rgba(133, 215, 246, .2);
+            display: block;
+            font-size: 80px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
             margin-right: auto;
-            top: 20px;
+            margin-top: -80px;
             font-weight: 900;
         }
     }
@@ -78,34 +100,65 @@ body {
 
 .one_project_card {
     /* border: 1px solid rgba($primary, .5); */
+    margin-top: 20px;
     border-radius: 0;
+
     .picture-handler {
         display: flex;
         justify-content: center;
     }
+
+    .card-img-overlay {
+        background-color: rgba(0, 0, 0, .7);
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+
+        .card-title {
+            font-weight: bold;
+            color: $primary;
+            text-transform: none;
+        }
+
+        .btn {
+
+        }
+    }
+}
+
+.project_description {
+    color: white;
+    font-size: 1.1rem;
 }
 
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 768px) {
 
     #content {
         padding: 0;
+        width: 100vw;
     }
 
     #menu {
-       min-width: 100vw;
-       border-bottom: 1px solid $primary;
-       .list-group-item-action {
-           display: none;
-       }
+        min-width: 100vw;
+        border-bottom: 1px solid $primary;
+
+        .list-group-item-action {
+            display: none;
+        }
     }
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 768px) {
+
+
+
 
     #menu {
-        /* height: 100vh;  */ 
+        width: 200px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         height: 110vh;
@@ -115,14 +168,34 @@ body {
         padding-top: 3em;
         margin-top: -2em;
         margin-left: -3em;
+        z-index: 200;
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 1rem;
+
+        #navbar {
+            flex-direction: column;
+            padding-left: 50px;
+            width: 200px;
+
+            a {
+                text-align: right;
+            }
+
+            .navbar-brand {
+                text-align: right;
+            }
+        }
     }
 
 
+
     #content {
-        margin-left: 20vw;
+        margin-left: 200px;
+        width: 100%;
         /* max-width: 70vw;
         background-color: red; */
-       /*  &:before {
+        /*  &:before {
             background-color: white;
             content: " ";
             margin-left: 21vw;
@@ -152,7 +225,7 @@ body {
         } */
     }
 
-   /*  .one_project_card {
+    /*  .one_project_card {
   
         height: 15vh;
         margin: 3vh 0;

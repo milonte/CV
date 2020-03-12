@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Card, CardGroup, Image, Col, Row, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export class ProjectCard extends Component {
     constructor(props) {
@@ -26,16 +27,25 @@ export class ProjectCard extends Component {
 
             <CardGroup>
                 <Card className="one_project_card text-white text-center" onMouseOver={this.showCardInfos} onMouseLeave={this.hideCardInfos}>
-                    <Card.Img className="project_picture" src={this.state.picturesPath + this.props.project.pictures[0]} alt="Card image" />
+                    <Card.Img className="project_picture img-fluid" src={this.state.picturesPath + this.props.project.pictures[0]} alt="Card image" />
                     <Card.ImgOverlay hidden={true}>
+                        <div className="my-auto p-0">
                         <Card.Title>{this.props.project.name}</Card.Title>
                         <Card.Text>
-                            {this.props.project.description}
+                            {this.props.project.shortDescription}
                         </Card.Text>
                         <Card.Text className="justify-content-around">
-                            <Button variant="success" href={'project/' + this.props.project.name}>Détails</Button>
-                            <Button variant="primary" href="#test">Site web</Button>
+                            <Row className="justify-content-center">
+                                <Button variant="success">
+                                    <Link to={{
+                                        pathname: 'project/' + this.props.project.name,
+                                        state: { project: this.props.project }
+                                    }}>Détails</Link>
+                                    </Button>
+                                <Button variant="primary" href="#test">Site web</Button>
+                            </Row>
                         </Card.Text>
+                        </div>
                     </Card.ImgOverlay>
                 </Card>
             </CardGroup>

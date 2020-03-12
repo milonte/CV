@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import ProjectCard from './ProjectCard';
 import Title from '../../Title';
-import { Col, Row, Container, Tab, ListGroup, Button, Nav } from 'react-bootstrap';
+import { Col, Row, Container, Spinner } from 'react-bootstrap';
 
 class Projects extends React.Component {
     constructor(props) {
@@ -13,6 +13,7 @@ class Projects extends React.Component {
 
         this.state = {
             projects: [],
+            done: undefined,
             /*  currentProjects: [],
              currentPage: 1,
              numberOfPages: 0,
@@ -29,6 +30,7 @@ class Projects extends React.Component {
             .then(projects => {
                 this.setState({
                     projects: projects,
+                    done: true,
                     /*  numberOfPages: (projects.length / this.state.projectsPerPage), */
                 });
             })
@@ -79,7 +81,7 @@ class Projects extends React.Component {
     renderProjects(projects) {
         return (
             projects.map(project =>
-                <Col xs={12} md={6} lg={4}>
+                <Col xs={12} md={6} xl={4}>
                     <ProjectCard key={project.id} project={project} />
                 </Col>
             )
@@ -92,7 +94,12 @@ class Projects extends React.Component {
                 <Title title="Réalisations" description="Zbouiiii zbouiiii zbouuiiiiiiiiiiiiiiiiiiiiiii !" />
                 <Container>
                     <Row>
-                        {this.renderProjects(this.state.projects)}
+                        {!this.state.done ? (
+                            <Spinner> A </Spinner>
+                        ) : (
+                            this.renderProjects(this.state.projects)
+                        )}
+
 
                     </Row>
                 </Container>

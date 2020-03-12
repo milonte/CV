@@ -10,11 +10,19 @@ use App\Repository\ProjectRepository;
 class HomeController extends AbstractController
 {
     /**
-     * @Route("/", name="home")
+     * @Route("/{reactRouting}", name="home", defaults={"reactRouting": null})
      */
     public function index()
     {
         return $this->render('home/index.html.twig');
+    }
+
+    /**
+     * @Route("project/{reactRouting}", name="project", defaults={"reactRouting": null})
+     */
+    public function project()
+    {
+        return $this->redirectToRoute('home');
     }
 
      /**
@@ -32,6 +40,7 @@ class HomeController extends AbstractController
             $result[] = [
                 'id' => $project->getId(),
                 'name' => $project->getName(),
+                'shortDescription' => $project->getShortDescription(),
                 'description' => $project->getDescription(),
                 'date' => $project->getDate(),
                 'pictures' => $pictures,
