@@ -20,19 +20,23 @@ body {
 
 
 #menu {
-    background-color: $primary;
+    background-image: url(../../assets/images/menubg.png);
     padding: 0;
-    
+
     #navbar {
         width: 100vw;
-        background-color: $primary;
         display: flex;
-    
-        a {
-            color: white;
+
+        .nav-link {
+
+            a {
+                color: white;
+            }
         }
+
     }
-   /*  .list-group {
+
+    /*  .list-group {
         width: 100%;
 
         .list-group-item {
@@ -99,7 +103,6 @@ body {
 }
 
 .one_project_card {
-    /* border: 1px solid rgba($primary, .5); */
     margin-top: 20px;
     border-radius: 0;
 
@@ -121,9 +124,7 @@ body {
             text-transform: none;
         }
 
-        .btn {
-
-        }
+        .btn {}
     }
 }
 
@@ -178,11 +179,18 @@ body {
             padding-left: 50px;
             width: 200px;
 
-            a {
-                text-align: right;
+            .nav-link {
+                width: 165px;
+                padding: 20px 0;
+                border-bottom: 1px solid rgba(white, .5);
+
+                a {
+                    padding-right: 20px;
+                    color: white;
+                }
             }
 
-            .navbar-brand {
+            a {
                 text-align: right;
             }
         }
